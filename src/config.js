@@ -3,10 +3,10 @@ import path from "path";
 dotenv.config({ path: path.join(process.cwd(), "src", ".env") });
 
 
-const dbUrl = `${process.env.DB_URL}/${process.env.DB_NAME}`;
+const dbUri = process.env.DB_URI;
 
 const secret = process.env.SECRET;
 
 const port = process.env.PORT;
 
-export { secret, dbUrl, port };
+export { secret, dbUri, port };

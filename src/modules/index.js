@@ -1,3 +1,3 @@
-import userRouter from './users/router.js';
+import userRouter from './user/router.js';
 
 export default [userRouter];
