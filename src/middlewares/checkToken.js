@@ -5,8 +5,8 @@ function checkToken(req, res, next) {
   try {
     let { token } = req.headers;
     if (!token) return next(new ForbiddenError(403, 'Invalid token'));
-    let { user_id } = jwt.verify(token);
-    req.userId = user_id;
+    let { userId } = jwt.verify(token);
+    req.userId = userId;
     return next();
   } catch (e) {
     next(new ForbiddenError(403, e.message));
