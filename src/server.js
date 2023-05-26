@@ -6,7 +6,7 @@ import { port } from './config.js';
 import { connectToDatabase } from './lib/db.js';
 const app = express();
 
-import routers from './modules/index.js'
+import routers from './modules/index.js';
 
 await connectToDatabase();
 app.use(cors());
@@ -15,7 +15,7 @@ app.use(express.static(path.join(path.join(process.cwd(), 'src', 'uploads'))));
 app.use('/v1', routers);
 
 
-app.use((error, req, res) => {
+app.use((error, req, res, next) => {
   if (error.status !== 500) {
     return res.status(error.status).json({
       status: error.status,

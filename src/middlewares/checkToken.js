@@ -4,7 +4,7 @@ import { ForbiddenError } from '../lib/error.js';
 function checkToken(req, res, next) {
   try {
     let { token } = req.headers;
-    if (!token) next(new ForbiddenError(403, 'Invalid token'));
+    if (!token) return next(new ForbiddenError(403, 'Invalid token'));
     let { user_id } = jwt.verify(token);
     req.userId = user_id;
     return next();
